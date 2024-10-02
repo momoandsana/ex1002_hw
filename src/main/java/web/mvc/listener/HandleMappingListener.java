@@ -22,6 +22,7 @@ public class HandleMappingListener implements ServletContextListener {
 
         System.out.println("------------- Listener -------------");
 
+
         try
         {
             for (String key : rb.keySet())

@@ -96,6 +96,6 @@
 </form>
 
 <hr>
-<div align=right><span style="font-size:9pt;">&lt;<a href="../elec?command=list">리스트로 돌아가기</a>&gt;</span></div>
+<div align=right><span style="font-size:9pt;">&lt;<a href="list.jsp">리스트로 돌아가기</a>&gt;</span></div>
 
 <jsp:include page="../common/footer.jsp"/>

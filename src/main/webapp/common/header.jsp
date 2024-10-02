@@ -37,8 +37,8 @@ src="${pageContext.request.contextPath}/js/jquery-3.2.1.min.js"></script>
      
       <li><a href="${path}/user/login.jsp">Login</a></li>
 <%--      <li><a href="${pageContext.request.contextPath}/front">Board</a></li>--%>
-<%--      <li><a href="${path}/front">Board</a></li>--%>
-      <li><a href="${path}/elec/list.jsp">Board</a></li>
+      <li><a href="${path}/front?key=elec&methodName=list">Board</a></li>
+<%--      <li><a href="${path}/elec/list.jsp">Board</a></li>--%>
      </ul>
      
      <!-- 로그인 되면 sessionScope에 loginUser 저장되어있다! -->
