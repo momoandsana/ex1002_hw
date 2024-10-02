@@ -1,4 +1,4 @@
-package dto;
+package web.mvc.dto;
 
 import java.util.List;
 

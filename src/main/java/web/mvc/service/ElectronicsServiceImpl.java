@@ -3,59 +3,53 @@ package web.mvc.service;
 import web.mvc.dao.ElectronicsDAO;
 import web.mvc.dao.ElectronicsDAOImpl;
 import web.mvc.dto.Electronics;
-import web.mvc.exception.ElectronicsException;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public class ElectronicsImpl implements ElectronicsService {
+public class ElectronicsServiceImpl implements ElectronicsService {
 
     private ElectronicsDAO electronicsDAO = new ElectronicsDAOImpl();
 
     @Override
     public List<Electronics> selectAll() throws SQLException {
+        // 모든 레코드 검색
         return electronicsDAO.selectAll();
     }
 
+    // 페이징은 나중에?
     @Override
-    public List<Electronics> getBoardList(int pageNo) throws SQLException {
+    public List<Electronics> selectAll(int pageNo) throws SQLException {
+        // 페이징 처리를 통해 특정 페이지의 레코드 검색
         return electronicsDAO.getBoardList(pageNo);
     }
 
     @Override
-    public Electronics selectByModelNum(String modelNum) throws SQLException, ElectronicsException {
+    public void insert(Electronics electronics) throws SQLException {
+        // 레코드 삽입
+        electronicsDAO.insert(electronics);
+    }
+
+    @Override
+    public Electronics selectByModelnum(String modelNum, boolean flag) throws SQLException {
         Electronics electronics = electronicsDAO.selectByModelNum(modelNum);
-        if (electronics == null) {
-            throw new ElectronicsException("No electronics found with model number: " + modelNum);
+
+        // flag가 true인 경우 조회수 증가
+        if (flag) {
+            electronicsDAO.increamentByReadnum(modelNum);
         }
+
         return electronics;
     }
 
     @Override
-    public int increamentByReadnum(String modelNum) throws SQLException {
-        return electronicsDAO.increamentByReadnum(modelNum);
-    }
-
-    @Override
-    public int insert(Electronics electronics) throws SQLException {
-        return electronicsDAO.insert(electronics);
-    }
-
-    @Override
-    public int delete(String modelNum, String password) throws SQLException, ElectronicsException {
+    public void delete(String modelNum, String password, String saveDir) throws SQLException {
         int result = electronicsDAO.delete(modelNum, password);
-        if (result == 0) {
-            throw new ElectronicsException("Deletion failed. Invalid model number or password.");
-        }
-        return result;
+        // 파일 시스템에서 파일 삭제
     }
 
     @Override
-    public int update(Electronics electronics) throws SQLException, ElectronicsException {
+    public void update(Electronics electronics) throws SQLException {
         int result = electronicsDAO.update(electronics);
-        if (result == 0) {
-            throw new ElectronicsException("Update failed. Invalid model number or password.");
-        }
-        return result;
     }
 }

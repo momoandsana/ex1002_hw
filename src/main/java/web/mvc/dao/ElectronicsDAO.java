@@ -1,6 +1,6 @@
-package dao;
+package web.mvc.dao;
 
-import dto.Electronics;
+import web.mvc.dto.Electronics;
 
 import java.sql.SQLException;
 import java.util.List;

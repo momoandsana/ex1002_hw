@@ -1,9 +1,9 @@
-package dao;
+package web.mvc.dao;
 
-import dto.Electronics;
-import dto.Reply;
-import paging.PageCnt;
-import util.DbUtil;
+import web.mvc.dto.Electronics;
+import web.mvc.dto.Reply;
+import web.mvc.paging.PageCnt;
+import web.mvc.util.DbUtil;
 
 import java.io.InputStream;
 import java.sql.Connection;

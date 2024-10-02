@@ -1,9 +1,9 @@
-package service;
+package web.mvc.service;
 
-import dao.UserDAO;
-import dao.UserDAOImpl;
-import dto.UserDTO;
-import exception.AuthenticationException;
+import web.mvc.dao.UserDAO;
+import web.mvc.dao.UserDAOImpl;
+import web.mvc.dto.UserDTO;
+import web.mvc.exception.AuthenticationException;
 
 import java.sql.SQLException;
 
@@ -13,15 +13,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO loginCheck(UserDTO userDTO) throws SQLException, AuthenticationException {
-        // DAO를 통해 데이터베이스에서 사용자 정보 확인
+
         UserDTO dbUser = userDAO.loginCheck(userDTO);
 
         if (dbUser == null) {
             // 사용자 정보가 없으면 로그인 실패
-            throw new AuthenticationException("Invalid username or password.");
+            throw new AuthenticationException("이름이나 비밀번호가 틀렸습니다");
         }
 
-        // 사용자 정보가 있으면 로그인 성공
         return dbUser;
     }
 }

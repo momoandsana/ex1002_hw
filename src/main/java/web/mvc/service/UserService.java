@@ -1,7 +1,7 @@
- package service;
+ package web.mvc.service;
 
- import dto.UserDTO;
- import exception.AuthenticationException;
+ import web.mvc.dto.UserDTO;
+ import web.mvc.exception.AuthenticationException;
 
  import java.sql.SQLException;
 

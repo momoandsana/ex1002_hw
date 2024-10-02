@@ -1,4 +1,4 @@
-package controller;
+package web.mvc.controller;
 
 /**
  * 요청을 처리한 후 최종적으로 이동할 뷰 정보와 이동 방식에 대한 속성을 관리한다

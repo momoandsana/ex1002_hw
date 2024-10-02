@@ -1,4 +1,4 @@
-package dto;
+package web.mvc.dto;
 
 public class UserDTO {
    private String userId; //DB user_id

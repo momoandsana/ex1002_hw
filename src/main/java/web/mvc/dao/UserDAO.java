@@ -1,6 +1,6 @@
-package dao;
+package web.mvc.dao;
 
-import dto.UserDTO;
+import web.mvc.dto.UserDTO;
 
 import java.sql.SQLException;
 

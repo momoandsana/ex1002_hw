@@ -1,6 +1,6 @@
-package service;
+package web.mvc.service;
 
-import dto.Electronics;
+import web.mvc.dto.Electronics;
 
 import java.sql.SQLException;
 import java.util.List;

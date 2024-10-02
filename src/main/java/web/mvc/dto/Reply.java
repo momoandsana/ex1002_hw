@@ -1,4 +1,4 @@
-package dto;
+package web.mvc.dto;
 
 public class Reply {
    private int replyNum;

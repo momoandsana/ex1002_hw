@@ -1,7 +1,7 @@
-package dao;
+package web.mvc.dao;
 
-import dto.UserDTO;
-import util.DbUtil;
+import web.mvc.dto.UserDTO;
+import web.mvc.util.DbUtil;
 
 import java.io.InputStream;
 import java.sql.Connection;
@@ -36,7 +36,10 @@ public class UserDAOImpl implements UserDAO {
 		PreparedStatement ps=null;
 		ResultSet rs=null;
 		UserDTO dbDTO =null;
-		
+
+		System.out.println("DAO 로그인 : "+userDTO.getUserId());
+		System.out.println("DAO 로그인 : "+userDTO.getPwd());
+
 		String sql= proFile.getProperty("query.userlogin");//select * from users where user_id=? and pwd=?
 		try {
 			con = DbUtil.getConnection();

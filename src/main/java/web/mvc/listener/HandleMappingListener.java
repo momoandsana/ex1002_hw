@@ -1,3 +1,5 @@
+package web.mvc.listener;
+
 import web.mvc.controller.Controller;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletContextEvent;
@@ -18,14 +20,18 @@ public class HandleMappingListener implements ServletContextListener {
         // 외부의 ~.properties 파일 로딩, properties 자동으로 가지고 옴. 기본적으로 resources 에서 찾아서 경로 설정 이렇게
         ResourceBundle rb=ResourceBundle.getBundle("actionMapping");
 
+        System.out.println("------------- Listener -------------");
+
         try
         {
             for (String key : rb.keySet())
             {
                 String value = rb.getString(key);
+                System.out.println("key = " + key);
 //                System.out.println("key = " + value);
 
                 Class<?> className = Class.forName(value);
+                System.out.println("className = " + className);
 //              Java 리플렉션 기능을 이용해 문자열로 주어진 클래스 이름(value)을 사용하여
 //               해당 클래스의 메타데이터를 반환하는 메서드
                 // 해당 클래스 이름에 해당하는 클래스가 jvm 의 클래스 경로에 로드되어 있어야 한다
