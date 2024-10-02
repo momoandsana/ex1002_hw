@@ -55,7 +55,8 @@ public class ElectronicsController implements Controller {
             request.getSession().setAttribute("error", "Insert failed: " + e.getMessage());
         }
 
-        ModelAndView mv = new ModelAndView("elec/list.jsp", true);
+        ModelAndView mv=list(request, response);
+        // 여기서 바로 elec/list.jsp 로 가버리면 리스트가 사라지는 현상이 있음
         return mv;
     }
 
