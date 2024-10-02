@@ -35,6 +35,8 @@ public class ElectronicsServiceImpl implements ElectronicsService {
         Electronics electronics = electronicsDAO.selectByModelNum(modelNum);
         System.out.println("ElectronicsServiceImpl.selectByModelnum");
         // flag가 true인 경우 조회수 증가
+
+        System.out.println(flag);
         if (flag) {
             electronicsDAO.increamentByReadnum(modelNum);
         }

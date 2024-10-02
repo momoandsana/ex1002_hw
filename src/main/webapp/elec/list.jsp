@@ -158,7 +158,7 @@ img{width:200px; height:350px}
 		        </td>
 		        <td bgcolor="">
 					<p><span style="font-size:9pt;">
-					<a href="${path}/front?key=elec&methodName=selectByModelNum&modelNum=${elecDto.modelNum}">
+					<a href="${path}/front?key=elec&methodName=selectByModelNum&modelNum=${elecDto.modelNum}&incrementRead=true">
 					  ${elecDto.modelName}
 					</a>
 					</span></p>

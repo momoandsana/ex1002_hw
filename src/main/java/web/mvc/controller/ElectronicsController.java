@@ -29,6 +29,7 @@ public class ElectronicsController implements Controller {
         String modelNum = request.getParameter("modelNum");
         // 'incrementRead' 파라미터를 확인하여 boolean 값으로 변환
         boolean incrementRead = Boolean.parseBoolean(request.getParameter("incrementRead"));
+        System.out.println(incrementRead);
         Electronics electronics = electronicsService.selectByModelnum(modelNum, incrementRead);
         request.setAttribute("elec", electronics);
 //        ModelAndView mv = new ModelAndView("elec/read.jsp", false);
