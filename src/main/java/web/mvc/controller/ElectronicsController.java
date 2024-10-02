@@ -38,13 +38,16 @@ public class ElectronicsController implements Controller {
 
     public ModelAndView insert(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         // 입력 폼에서 전달된 데이터 처리
+        System.out.println("--------- ElectronicsController ---------");
+        System.out.println("insert 함수 도착");
+
         String modelNum = request.getParameter("modelNum");
+        System.out.println("modelNum = " + modelNum);
         String modelName = request.getParameter("name");
         String description = request.getParameter("description");
         int price = Integer.parseInt(request.getParameter("price"));
         String password = request.getParameter("password");
 
-        // 생성자에 맞게 Electronics 객체 생성
         Electronics electronics = new Electronics(modelNum, modelName, price, description, password);
         electronicsService.insert(electronics);
 

@@ -6,8 +6,8 @@
 <%@ page isELIgnored="false" %>
 
 
-\${pageContext.request.contextPath} = ${pageContext.request.contextPath} <br>
-\${path} : ${path}
+<%--\${pageContext.request.contextPath} = ${pageContext.request.contextPath} <br>--%>
+<%--\${path} : ${path}--%>
 
 
 

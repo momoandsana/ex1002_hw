@@ -69,14 +69,16 @@ function checkValid() {
             <p align="right"><b><span style="font-size:9pt;">모델번호</span></b></p>
         </td>
         <td width="450" height="20"><b><span style="font-size:9pt;">
-		<input type=text name="model_num" size="30"></span></b></td>
+<%--		<input type=text name="model_num" size="30"></span></b></td>--%>
+		<input type=text name="modelNum" size="30"></span></b></td>
     </tr>
     <tr>
         <td width="150" height="20">
             <p align="right"><b><span style="font-size:9pt;">모델이름</span></b></p>
         </td>
         <td width="450" height="20"><b><span style="font-size:9pt;">
-		<input type=text name="model_name" size="30"></span></b></td>
+<%--		<input type=text name="model_name" size="30"></span></b></td>--%>
+		<input type=text name="modelName" size="30"></span></b></td>
     </tr>
     <tr>
         <td width="150" height="20">
@@ -99,7 +101,8 @@ function checkValid() {
         </td>
         <td width="450" height="20">
         	<b><span style="font-size:9pt;">
-        		 <input type="file" name="file" maxlength="60" size="40">
+<%--        		 <input type="file" name="file" maxlength="60" size="40">--%>
+        		 <input type="file" name="fname" maxlength="60" size="40">
         	   </span></b>
         </td>
     </tr>

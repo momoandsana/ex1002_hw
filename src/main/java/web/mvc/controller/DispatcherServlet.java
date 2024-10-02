@@ -66,7 +66,8 @@ public class DispatcherServlet extends HttpServlet {
         System.out.println("methodName = " + methodName);
 
         ModelAndView mv = null;
-        try {
+        try
+        {
             Controller con = map.get(key);// 해당 컨트롤러 객체를 얻는다
             Class<?> className = classMap.get(key); // 컨트롤러 객체의 메타데이터를 얻는다
 
@@ -88,6 +89,7 @@ public class DispatcherServlet extends HttpServlet {
         {
             response.sendRedirect(mv.getViewName());
         }
+
         else
         {
             // forward 하는 경우

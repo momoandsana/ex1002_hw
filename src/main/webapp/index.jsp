@@ -21,7 +21,7 @@
       
     2. 주요 기술 및 환경<p>
       &nbsp;&nbsp;1) Refactoring MVC구조  <br>
-      &nbsp;&nbsp;2) Filter  - Session유무 체크 <br>
+      &nbsp;&nbsp;2) Filter  - Session 유무 체크 <br>
       &nbsp;&nbsp;&nbsp;&nbsp; : Board에 대한 접근은  인증된 사용자만 가능<br>
 	  &nbsp;&nbsp;3) ServletContextListener - 사전 초기화 작업 <br>
 	  &nbsp;&nbsp;4) Servlet Upload + DownLoad <br>
