@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+// 파일 업로드 기능 제외 -> 컨트롤러에서 getParameter 을 얻지 못함, null 로 값을 가지고 옴
 public class ElectronicsController implements Controller {
 
     private ElectronicsService electronicsService = new ElectronicsServiceImpl();
