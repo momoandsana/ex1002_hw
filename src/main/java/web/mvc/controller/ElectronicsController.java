@@ -48,7 +48,8 @@ public class ElectronicsController implements Controller {
         int price = Integer.parseInt(request.getParameter("price"));
         String password = request.getParameter("password");
 
-        Electronics electronics = new Electronics(modelNum, modelName, price, description, password);
+//        Electronics electronics = new Electronics(modelNum, modelName, price, description, password);
+        Electronics electronics = new Electronics("999", "modelName", 500, "hi", "1234");
         electronicsService.insert(electronics);
 
         ModelAndView mv = new ModelAndView();
