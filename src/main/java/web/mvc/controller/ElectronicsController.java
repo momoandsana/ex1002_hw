@@ -23,7 +23,7 @@ public class ElectronicsController implements Controller {
         return mv;
     }
 
-    //상세보기
+    //상세보기-완료
     public ModelAndView selectByModelNum(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         System.out.println("상세보기 도착");
         String modelNum = request.getParameter("modelNum");
@@ -32,8 +32,11 @@ public class ElectronicsController implements Controller {
         System.out.println(incrementRead);
         Electronics electronics = electronicsService.selectByModelnum(modelNum, incrementRead);
         request.setAttribute("elec", electronics);
-//        ModelAndView mv = new ModelAndView("elec/read.jsp", false);
-        // read.jsp 에 수정하기 삭제하기 기능 있음
+        /*
+          여기서 elec 으로 전달하면 여기에 게시글+댓글 정보가 모두 들어 있음
+           댓글에 대한 정보는 다른 테이블에 있지만 electronics dto 에 replies 가 있으므로 여기에다가 추가할 수 있다
+         */
+
 
 //        System.out.println(electronics.getModelNum());
 //        System.out.println(electronics.getModelName());;
@@ -64,6 +67,7 @@ public class ElectronicsController implements Controller {
         return mv;
     }
 
+    //완료
     public ModelAndView delete(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         System.out.println("delete 도착");
         String modelNum = request.getParameter("modelNum");
@@ -85,7 +89,7 @@ public class ElectronicsController implements Controller {
         return mv;
     }
 
-    // 미완성
+    // 미완성-> 수정칸에서 수정이 불가능, 칸에 마우스 커서가 안 들어감
     public ModelAndView update(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         System.out.println("update 도착");
         String modelNum = request.getParameter("modelNum");

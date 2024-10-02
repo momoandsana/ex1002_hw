@@ -127,6 +127,8 @@ function sendDelete(){
         댓글정보가 없습니다.
    </c:when>
    <c:otherwise>
+<%--       ${elec.repliesList}--%>
+
        <c:forEach items="${elec.repliesList}" var="reply">
           ${reply.replyNum} / ${reply.replyContent} / ${reply.replyRegdate}<br>
        </c:forEach>

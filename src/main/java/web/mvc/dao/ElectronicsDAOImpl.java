@@ -144,12 +144,18 @@ public class ElectronicsDAOImpl implements ElectronicsDAO {
 				electronics = new Electronics(rs.getString(1), rs.getString(2), rs.getInt(3),
 						rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7),
 						rs.getString(8), rs.getInt(9));
+				// 1차적으로 자기 테이블에 있는 정보들 가지고 와서 조립
 				
 				//댓글정보 검색!!!
 				electronics.setRepliesList(this.getReply(con, modelNum));
+				/*
+				밑에 함수에서 부모 모델번호로 그 모델에 대한 댓글들을 가지고 옴
+				컬럼으로 들어가 있지 않고 다른 테이블에 있는 댓글들이기 때문에
+				 */
 			}
 		}finally {
 			DbUtil.dbClose(con, ps, rs);
+
 		}
 		return electronics;
 	}
