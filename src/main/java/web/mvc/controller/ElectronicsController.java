@@ -56,7 +56,7 @@ public class ElectronicsController implements Controller {
         }
 
         ModelAndView mv=list(request, response);
-        // 여기서 바로 elec/list.jsp 로 가버리면 리스트가 사라지는 현상이 있음
+        // 여기서 바로 elec/list.jsp 로 가버리면 리스트가 사라지는 현상이 있음. list 함수를 통해 다시 디비에서 조회해서 반영
         return mv;
     }
 
