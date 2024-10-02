@@ -158,7 +158,7 @@ img{width:200px; height:350px}
 		        </td>
 		        <td bgcolor="">
 					<p><span style="font-size:9pt;">
-					<a href="${path}/front?key=elec&methodName=selectByModelNum&modelNum=${elecDto.modelNum}&pageNo=${pageNo}">
+					<a href="${path}/front?key=elec&methodName=selectByModelNum&modelNum=${elecDto.modelNum}">
 					  ${elecDto.modelName}
 					</a>
 					</span></p>
@@ -235,33 +235,4 @@ img{width:200px; height:350px}
 
  
 <jsp:include page="../common/footer.jsp"/>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -19,21 +19,24 @@ public class ElectronicsController implements Controller {
         request.setAttribute("list", electronicsList);
         // list.jsp 에서도 RequestScope.list 로 받아야 함
 
-        for (Electronics electronics : electronicsList) {
-            System.out.println(electronics);
-        }
-
         ModelAndView mv = new ModelAndView("elec/list.jsp", false);
         return mv;
     }
 
-    public ModelAndView detail(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+    //상세보기
+    public ModelAndView selectByModelNum(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+        System.out.println("상세보기 도착");
         String modelNum = request.getParameter("modelNum");
         // 'incrementRead' 파라미터를 확인하여 boolean 값으로 변환
         boolean incrementRead = Boolean.parseBoolean(request.getParameter("incrementRead"));
         Electronics electronics = electronicsService.selectByModelnum(modelNum, incrementRead);
-        request.setAttribute("electronics", electronics);
-        ModelAndView mv = new ModelAndView("elec/detail.jsp", false);
+        request.setAttribute("elec", electronics);
+//        ModelAndView mv = new ModelAndView("elec/read.jsp", false);
+        // read.jsp 에 수정하기 삭제하기 기능 있음
+
+//        System.out.println(electronics.getModelNum());
+//        System.out.println(electronics.getModelName());;
+        ModelAndView mv = new ModelAndView("elec/read.jsp", false);
         return mv;
     }
 
@@ -48,11 +51,11 @@ public class ElectronicsController implements Controller {
         try
         {
             electronicsService.insert(electronics);
-            request.getSession().setAttribute("message", "Insert successful!");
+            request.getSession().setAttribute("message", "Insert 성공!");
         }
         catch (SQLException e)
         {
-            request.getSession().setAttribute("error", "Insert failed: " + e.getMessage());
+            request.getSession().setAttribute("error", "Insert 실패: " + e.getMessage());
         }
 
         ModelAndView mv=list(request, response);
@@ -61,39 +64,47 @@ public class ElectronicsController implements Controller {
     }
 
     public ModelAndView delete(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+        System.out.println("delete 도착");
         String modelNum = request.getParameter("modelNum");
         String password = request.getParameter("password");
-        // 파일 저장 경로를 얻기, 실제 경로는 환경에 따라 다를 수 있음
-        String saveDir = request.getServletContext().getRealPath("/uploads");
+        System.out.println("password = " + password);
+        String saveDir = request.getParameter("saveDir"); // 파일은 저장x
 
-        try {
+        try
+        {
             electronicsService.delete(modelNum, password, saveDir);
-            request.getSession().setAttribute("message", "Delete successful!");
-        } catch (SQLException e) {
-            request.getSession().setAttribute("error", "Delete failed: " + e.getMessage());
+            request.getSession().setAttribute("message", "삭제 성공");
         }
-
-        ModelAndView mv = new ModelAndView("elec/list.jsp", true);
+        catch (SQLException e)
+        {
+            request.getSession().setAttribute("error", "삭제 실패 : " + e.getMessage());
+        }
+        System.out.println("delete try 문 끝");
+        ModelAndView mv=list(request, response);
         return mv;
     }
 
-
+    // 미완성
     public ModelAndView update(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+        System.out.println("update 도착");
         String modelNum = request.getParameter("modelNum");
         String modelName = request.getParameter("modelName");
         String description = request.getParameter("description");
         int price = Integer.parseInt(request.getParameter("price"));
+        System.out.println("update price = " + price);
         String password = request.getParameter("password");
 
         Electronics electronics = new Electronics(modelNum, modelName, price, description, password);
-        try {
+        try
+        {
             electronicsService.update(electronics);
-            request.getSession().setAttribute("message", "Update successful!");
-        } catch (SQLException e) {
-            request.getSession().setAttribute("error", "Update failed: " + e.getMessage());
+        }
+        catch (SQLException e)
+        {
+            request.getSession().setAttribute("error", "업데이트 실패: " + e.getMessage());
         }
 
-        ModelAndView mv = new ModelAndView("elec/list.jsp", true);
+        ModelAndView mv=list(request, response); // list 함수를 통해 최신 정보를 업데이트 함
         return mv;
     }
 }

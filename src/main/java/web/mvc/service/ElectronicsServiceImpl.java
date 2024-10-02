@@ -33,7 +33,7 @@ public class ElectronicsServiceImpl implements ElectronicsService {
     @Override
     public Electronics selectByModelnum(String modelNum, boolean flag) throws SQLException {
         Electronics electronics = electronicsDAO.selectByModelNum(modelNum);
-
+        System.out.println("ElectronicsServiceImpl.selectByModelnum");
         // flag가 true인 경우 조회수 증가
         if (flag) {
             electronicsDAO.increamentByReadnum(modelNum);

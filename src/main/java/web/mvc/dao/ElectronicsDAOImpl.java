@@ -132,7 +132,7 @@ public class ElectronicsDAOImpl implements ElectronicsDAO {
 		PreparedStatement ps=null;
 		ResultSet rs=null;
 		Electronics electronics = null;
-		
+		System.out.println("DAO : "+modelNum);
 		String sql= proFile.getProperty("query.selectBymodelNum");//select * from Electronics where model_num=?
 		try {
 			con = DbUtil.getConnection();

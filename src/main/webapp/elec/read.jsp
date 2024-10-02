@@ -10,7 +10,7 @@
 
 <SCRIPT language=javascript>
 function sendUpdate(){
-	document.requestForm.methodName.value ="updateForm";
+	document.requestForm.methodName.value ="update";
 	document.requestForm.submit();
 }
 
@@ -137,8 +137,8 @@ function sendDelete(){
 
 <div align=right>
 <span style="font-size:9pt;">
-	<a href="${path}/front">리스트로 돌아가기-첫번째</a> &nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="${path}/front?pageNo=${pageNo}">리스트로 돌아가기-원래위치</a>
+	<a href="${path}/front?key=elec&methodName=list">리스트로 돌아가기-첫번째</a> &nbsp;&nbsp;&nbsp;&nbsp;
+<%--	<a href="${path}/front?pageNo=${pageNo}">리스트로 돌아가기-원래위치</a>--%>
 </span>
 </div>
 

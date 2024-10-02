@@ -41,7 +41,7 @@ function checkValid() {
 <BODY>
 
 
-<form name=updateForm method=post action="${path}/front" onSubmit="return checkValid()">
+<form name=updateForm method=post action="${path}/front?key=elec&methodName=update" onSubmit="return checkValid()">
     <input type="hidden" name="key" value="elec" >
     <input type="hidden" name="methodName" value="update" >
     <input type='hidden' name='modelNum' value="${elec.modelNum}">
