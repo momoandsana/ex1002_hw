@@ -75,6 +75,16 @@ public class ElectronicsController implements Controller {
         System.out.println("password = " + password);
         String saveDir = request.getParameter("saveDir"); // 파일은 저장x
 
+        // 비밀번호가 맞아야지 삭제 가능하게
+        Electronics electronics=electronicsService.selectByModelnum(modelNum,false);
+        System.out.println("DB pw : "+electronics.getPassword());
+
+        if(!electronics.getPassword().equals(password))
+        {
+            request.setAttribute("errorMsg","비밀번호가 일치하지 않으므로 게시글을 삭제할 수 없습니다");
+            return new ModelAndView("error/error.jsp");
+        }
+
         try
         {
             electronicsService.delete(modelNum, password, saveDir);
@@ -89,7 +99,6 @@ public class ElectronicsController implements Controller {
         return mv;
     }
 
-    // 미완성-> 수정칸에서 수정이 불가능, 칸에 마우스 커서가 안 들어감
     public ModelAndView update(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         System.out.println("update 도착");
 
@@ -98,6 +107,13 @@ public class ElectronicsController implements Controller {
 
         // 데이터베이스에서 모델 번호를 통해 Electronics 정보를 조회
         Electronics electronics = electronicsService.selectByModelnum(modelNum, false);
+
+        // 비밀번호가 일치하지 않는다면 수정할 수 없음
+        if(!electronics.getPassword().equals(request.getParameter("password")))
+        {
+            request.setAttribute("errorMsg", "비밀번호가 일치하지 않으므로 게시글을 수정할 수 없습니다.");
+            return new ModelAndView("error/error.jsp");
+        }
 
         // 조회된 모델 정보를 update.jsp로 전달
         request.setAttribute("elec", electronics);
