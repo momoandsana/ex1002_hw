@@ -221,6 +221,7 @@ public class ElectronicsDAOImpl implements ElectronicsDAO {
 			
 			result = ps.executeUpdate();
 		}finally {
+			System.out.println("DAO : insert 완료");
 			DbUtil.dbClose(con, ps);
 		}
 		return result;
@@ -242,6 +243,7 @@ public class ElectronicsDAOImpl implements ElectronicsDAO {
 			
 			result = ps.executeUpdate();
 		}finally {
+			System.out.println("DAO : delete 완료");
 			DbUtil.dbClose(con, ps);
 		}
 		return result;
@@ -249,6 +251,7 @@ public class ElectronicsDAOImpl implements ElectronicsDAO {
 
 	@Override
 	public int update(Electronics electronics) throws SQLException {
+		System.out.println("DAO : insert 도착");
 		Connection con=null;
 		PreparedStatement ps=null;
 		int result=0;
@@ -265,6 +268,7 @@ public class ElectronicsDAOImpl implements ElectronicsDAO {
 			
 			result = ps.executeUpdate();
 		}finally {
+			System.out.println("DAO : update 완료");
 			DbUtil.dbClose(con, ps);
 		}
 		return result;

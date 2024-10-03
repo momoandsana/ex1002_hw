@@ -92,24 +92,18 @@ public class ElectronicsController implements Controller {
     // 미완성-> 수정칸에서 수정이 불가능, 칸에 마우스 커서가 안 들어감
     public ModelAndView update(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         System.out.println("update 도착");
+
+        // 수정할 모델 번호 받아오기
         String modelNum = request.getParameter("modelNum");
-        String modelName = request.getParameter("modelName");
-        String description = request.getParameter("description");
-        int price = Integer.parseInt(request.getParameter("price"));
-        System.out.println("update price = " + price);
-        String password = request.getParameter("password");
 
-        Electronics electronics = new Electronics(modelNum, modelName, price, description, password);
-        try
-        {
-            electronicsService.update(electronics);
-        }
-        catch (SQLException e)
-        {
-            request.getSession().setAttribute("error", "업데이트 실패: " + e.getMessage());
-        }
+        // 데이터베이스에서 모델 번호를 통해 Electronics 정보를 조회
+        Electronics electronics = electronicsService.selectByModelnum(modelNum, false);
 
-        ModelAndView mv=list(request, response); // list 함수를 통해 최신 정보를 업데이트 함
-        return mv;
+        // 조회된 모델 정보를 update.jsp로 전달
+        request.setAttribute("elec", electronics);
+
+        // update.jsp 수정 폼 페이지로 이동
+        return new ModelAndView("elec/update.jsp", false);
     }
+
 }

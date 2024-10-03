@@ -49,6 +49,7 @@ public class ElectronicsServiceImpl implements ElectronicsService {
 
     @Override
     public void update(Electronics electronics) throws SQLException {
+        System.out.println("Service : update 도착");
         int result = electronicsDAO.update(electronics);
     }
 }
