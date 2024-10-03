@@ -160,6 +160,7 @@ img{width:200px; height:350px}
 					<p><span style="font-size:9pt;">
 					<a href="${path}/front?key=elec&methodName=selectByModelNum&modelNum=${elecDto.modelNum}&incrementRead=true">
 					  ${elecDto.modelName}
+<%--						이 링크를 클릭하면 상세보기로 가면서 조회수를 증가시킴--%>
 					</a>
 					</span></p>
 		        </td>
