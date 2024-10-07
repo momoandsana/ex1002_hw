@@ -106,9 +106,6 @@ public class ElectronicsDAOImpl implements ElectronicsDAO {
 	}
 	
 	
-	/**
-	 * 전체레코드 수 검색하기
-	 * */
 	private int getTotalCount(Connection con) throws SQLException{
 		PreparedStatement ps=null;
 		ResultSet rs=null;
@@ -160,9 +157,6 @@ public class ElectronicsDAOImpl implements ElectronicsDAO {
 		return electronics;
 	}
 	
-	/**
-	 * 댓글정보 가져오기 
-	 * */
 	private List<Reply> getReply(Connection con , String modelNum)throws SQLException{
 		PreparedStatement ps=null;
 		ResultSet rs=null;

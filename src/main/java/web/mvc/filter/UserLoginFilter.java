@@ -31,7 +31,6 @@ public class UserLoginFilter implements Filter {
             return;
         }
 
-        // 로그인된 경우 필터 체인을 통해 다음 단계로..
         filterChain.doFilter(servletRequest, servletResponse);
     }
 }
